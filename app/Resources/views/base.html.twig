@@ -2,13 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <link rel="stylesheet"  href="{{ asset('css/style.css') }}" type="text/css"..o>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
     {% block nav %}
-        <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo.png') }}"></a>
+        <a href="{{ path('homepage') }}"><img  src="{{ asset('images/logoFrite.png') }}"></a>
         <li><a href="{{ path('homepage') }}">Accueil</a></li>
         <li><a href="{{ path('menu') }}">Menu</a></li>
         <li><a href="{{ path('photo') }}">Photo</a></li>
