@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet"  href="{{ asset('css/style.css') }}" type="text/css"..o>
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicoDF.ico') }}" />
-    </head>
-    <body>
-    {% block nav %}
-        <a href="{{ path('homepage') }}"><img  src="{{ asset('images/logoFrite.png') }}"></a>
-        <li><a href="{{ path('homepage') }}">Accueil</a></li>
-        <li><a href="{{ path('menu') }}">Menu</a></li>
-        <li><a href="{{ path('photo') }}">Photo</a></li>
-        <li><a href="{{ path('contact') }}">Contact</a></li>
-    {% endblock %}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">#}
+    {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>#}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicoDF.ico') }}"/>
+</head>
+<body>
+{% block nav %}
+    <a href="{{ path('homepage') }}"><img src="{{ asset('images/logoFrite.png') }}"></a>
+    <li><a href="{{ path('homepage') }}">Accueil</a></li>
+    <li><a href="{{ path('menu') }}">Menu</a></li>
+    <li><a href="{{ path('photo') }}">Photo</a></li>
+    <li><a href="{{ path('contact') }}">Contact</a></li>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li><a href="">Admin</a></li>
+    {% endif %}
+{% endblock %}
+{% block header %}
+    <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

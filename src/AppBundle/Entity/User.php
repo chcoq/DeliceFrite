@@ -9,6 +9,10 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     protected $id;
+    /**
+     * @var string
+     */
+    protected $prenom;
 
     public function __construct()
     {
@@ -17,10 +21,14 @@ class User extends BaseUser
     }
 
     /**
-     * @var string
+     * Get prenom
+     *
+     * @return string
      */
-    private $prenom;
-
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
 
     /**
      * Set prenom
@@ -34,15 +42,5 @@ class User extends BaseUser
         $this->prenom = $prenom;
 
         return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
     }
 }
