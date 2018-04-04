@@ -35,6 +35,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        title: Delice Frite
 
 # Doctrine Configuration
 doctrine:
@@ -71,7 +73,10 @@ fos_user:
     firewall_name: fosuser
     user_class: AppBundle\Entity\User
     from_email:
-        address:        fab@mail.fr
-        sender_name:    FABIAN
+        address:        david@mail.fr
+        sender_name:    David
     service:                               # this lines
         mailer: fos_user.mailer.twig_swift
+    registration:
+        form:
+            name: app_user_registration

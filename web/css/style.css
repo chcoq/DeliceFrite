@@ -2,8 +2,12 @@ body
 {
        background-color: #ff00cb;
 }
-
+nav
+{
+       background-color: #f9ff01;
+}
 img
 {
-       width: 100px;
+       width: 50px;
 }
+

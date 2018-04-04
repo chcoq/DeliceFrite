@@ -11,3 +11,10 @@ AppBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+        codePostal:
+            type: string
+            length: '5'
+        ville:
+            type: string
+            lenght: 50
+
